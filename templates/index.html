@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistemi i Hyrje-Daljeve</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f7f6; }
+        .container { max-width: 600px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        input, button { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #28a745; color: white; font-weight: bold; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        ul { list-style-type: none; padding: 0; }
+        li { background: #e9ecef; margin: 5px 0; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Regjistrimi i Punëtorëve</h2>
+        <form action="/regjistro" method="POST">
+            <label for="emri">Emri i Punëtorit:</label>
+            <input type="text" id="emri" name="emri" placeholder="Shkruaj emrin..." required>
+
+            <label for="email">Email Adresa:</label>
+            <input type="email" id="email" name="email" placeholder="punetori@email.com" required>
+
+            <button type="submit">Regjistro Punëtorin</button>
+        </form>
+
+        <h3>Lista e Punëtorëve të Regjistruar:</h3>
+        <ul>
+            {% for worker in workers %}
+                <li><strong>{{ worker.emri }}</strong> - {{ worker.email }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
